@@ -19,9 +19,19 @@ app.get(`/tip/:total/:tipPercentage`, (req, res) => {
 app.get(`/magic/:phrase`, (req, res) => {
     let randomResponse = Math.floor(Math.random() * 20);
     res.send(`${req.params.phrase}? <h1>the answer is... ${response[randomResponse]}</h1>`);
+});
+
+app.get(`/`, (req, res) => {
+    res.send(`99 Bottles of beer on the wall <a href= "/98"> take one down, pass it around</a>`)
+});
+
+app.get(`/0`, (req, res) => {
+    res.send(`0 Bottles of beer on the wall <a href= "/98"> take one down, pass it around</a>`)
 })
 
-
+app.get(`/:number_of_bottles`, (req, res) => {
+    res.send(`${req.params.number_of_bottles} Bottles of beer on the wall <a href= "/${req.params.number_of_bottles - 1}"> take one down pass it around</a>`);
+});
 
 app.listen(PORT, () => {
     console.log(`listening on port 3000`)
